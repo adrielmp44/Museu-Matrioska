@@ -1,0 +1,103 @@
+/* Estilo para as telas de sobreposição (Mapa e Créditos) */
+.overlay-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.overlay-content {
+  padding: 40px;
+  border-radius: 10px;
+  background-color: rgba(25, 25, 25, 0.7);
+  border: 1px solid #444;
+  max-width: 600px;
+}
+
+.overlay-content h2 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+/* Estilo geral para o botão de voltar */
+.back-button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: rgba(100, 100, 100, 0.7);
+  border: 2px solid #333;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  background-color: rgba(120, 120, 120, 0.9);
+  border-color: #ddd;
+}
+
+/* ===============================================
+== ESTILOS PARA A TELA DE TOUR VIRTUAL ==
+===============================================
+*/
+
+/* 1. Faz o container do tour ocupar a tela inteira */
+.tour-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+/* 2. Reposiciona o botão de voltar para o canto inferior esquerdo */
+.tour-back-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  margin-top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Estilo dos botões na tela de mapa */
+.map-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.map-buttons button {
+    padding: 15px;
+    font-size: 1rem;
+    background-color: rgba(80, 80, 80, 0.7);
+    border: 1px solid #555;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.map-buttons button:hover {
+    background-color: rgba(100, 100, 100, 0.9);
+}
+
+
+/* Media query para ajustar em telas menores (celulares) */
+@media (max-width: 600px) {
+  .tour-back-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    bottom: 15px;
+    left: 15px;
+  }
+}
