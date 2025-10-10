@@ -1,14 +1,50 @@
-/* Estilo para as telas de sobreposição (Mapa e Créditos) */
-.overlay-container {
+/* src/App.css */
+
+/* ===============================================
+   ESTILOS GLOBAIS DA APLICAÇÃO
+   =============================================== */
+
+.tour-container {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: #000;
+}
+
+/* --- ALTERAÇÃO PRINCIPAL AQUI --- */
+.tour-back-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px; /* Alterado de 'left' para 'right' */
+  left: auto;   /* Remove a propriedade 'left' anterior */
+  z-index: 100;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  margin-top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* ===============================================
+   ESTILOS DE OVERLAY (MAPA E CRÉDITOS)
+   =============================================== */
+
+.overlay-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
   color: white;
   font-family: Arial, sans-serif;
   text-align: center;
+  z-index: 200;
 }
 
 .overlay-content {
@@ -24,7 +60,28 @@
   font-size: 2rem;
 }
 
-/* Estilo geral para o botão de voltar */
+.map-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.map-buttons button {
+  padding: 15px;
+  font-size: 1rem;
+  background-color: rgba(80, 80, 80, 0.7);
+  border: 1px solid #555;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.map-buttons button:hover {
+  background-color: rgba(100, 100, 100, 0.9);
+}
+
+/* Botão "Voltar" genérico para overlays */
 .back-button {
   margin-top: 30px;
   padding: 12px 25px;
@@ -33,7 +90,7 @@
   border: 2px solid #333;
   color: white;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 
 .back-button:hover {
@@ -42,62 +99,78 @@
 }
 
 /* ===============================================
-== ESTILOS PARA A TELA DE TOUR VIRTUAL ==
-===============================================
-*/
+   ESTILOS DOS CONTROLES DE ÁUDIO GLOBAIS
+   =============================================== */
 
-/* 1. Faz o container do tour ocupar a tela inteira */
-.tour-container {
+.audio-controls {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
+  bottom: 30px;
+  left: 40px; /* Mantém os controles de som à esquerda */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 999;
 }
 
-/* 2. Reposiciona o botão de voltar para o canto inferior esquerdo */
-.tour-back-button {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  z-index: 100;
-  padding: 8px 16px;
-  font-size: 0.9rem;
-  margin-top: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+.sound-icon {
+  width: 35px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
 }
 
-/* Estilo dos botões na tela de mapa */
-.map-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 20px;
+.sound-icon:hover {
+  opacity: 1;
 }
 
-.map-buttons button {
-    padding: 15px;
-    font-size: 1rem;
-    background-color: rgba(80, 80, 80, 0.7);
-    border: 1px solid #555;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.sound-icon.paused {
+  opacity: 0.4;
 }
 
-.map-buttons button:hover {
-    background-color: rgba(100, 100, 100, 0.9);
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 120px;
+  height: 5px;
+  background: #ffffff;
+  outline: none;
+  border-radius: 5px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
 }
 
+.volume-slider:hover {
+  opacity: 1;
+}
 
-/* Media query para ajustar em telas menores (celulares) */
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* ===============================================
+   MEDIA QUERIES
+   =============================================== */
+
 @media (max-width: 600px) {
   .tour-back-button {
     padding: 6px 12px;
     font-size: 0.8rem;
     bottom: 15px;
-    left: 15px;
+    right: 15px; /* Ajuste para telas menores */
   }
 }
