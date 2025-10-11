@@ -1,23 +1,19 @@
-// src/components/MenuScreen.jsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import './MenuScreen.css';
 
-// Caminhos relativos para os assets
 import backgroundMenuImage1 from '../assets/fotos_museu/Local 1.jpg';
 import backgroundMenuImage2 from '../assets/fotos_museu/Local 2.jpg';
 import logo from '../assets/logo_matrioska/Logo-Matrioska.png';
-
-// 1. IMPORTAÇÃO DE TODOS OS LOGOS DO SITE
 import logoAzul from '../assets/logo_site/Fundo_Azul.png';
 import logoAzulBB from '../assets/logo_site/Fundo_AzulBB.png';
 import logoLaranja from '../assets/logo_site/Fundo_Laranja.png';
 import logoPreto from '../assets/logo_site/Fundo_Preto.png';
 import logoSalmao from '../assets/logo_site/Fundo_Salmão.png';
 import logoVermelho from '../assets/logo_site/Fundo_Vermelho.png';
+
 
 function RotatingSphere() {
   const textures = useTexture([backgroundMenuImage1, backgroundMenuImage2]);
@@ -44,14 +40,36 @@ function RotatingSphere() {
 }
 
 export default function MenuScreen({ onStart, onMap, onCredits }) {
-  // 2. LÓGICA PARA SORTEAR O LOGO DO SITE
   const siteLogos = [logoAzul, logoAzulBB, logoLaranja, logoPreto, logoSalmao, logoVermelho];
   const [activeSiteLogo, setActiveSiteLogo] = useState(siteLogos[0]);
+  const [permissionGranted, setPermissionGranted] = useState(false);
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * siteLogos.length);
     setActiveSiteLogo(siteLogos[randomIndex]);
-  }, []); // Array vazio faz com que o sorteio ocorra apenas uma vez, ao carregar
+  }, []);
+
+  const handlePermission = async () => {
+    // Verifica se a API de permissão está disponível (padrão para iOS)
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      try {
+        const response = await DeviceOrientationEvent.requestPermission();
+        if (response === 'granted') {
+          setPermissionGranted(true);
+          alert('Acesso ao giroscópio concedido!');
+        } else {
+          alert('Acesso ao giroscópio negado.');
+        }
+      } catch (error) {
+        console.error('Erro ao solicitar permissão de orientação do dispositivo:', error);
+        alert('Este dispositivo não suporta a solicitação de permissão para o giroscópio.');
+      }
+    } else {
+      // Para outros dispositivos (Android), a permissão geralmente não é necessária
+      setPermissionGranted(true);
+      console.log('Permissão de orientação do dispositivo não necessária ou já concedida.');
+    }
+  };
 
   return (
     <div className="menu-container">
@@ -67,6 +85,9 @@ export default function MenuScreen({ onStart, onMap, onCredits }) {
           <p>Experiência 360°: Museu Jacinto de Sousa</p>
         </div>
         <div className="menu-buttons">
+          {/Mobi|Android/i.test(navigator.userAgent) && !permissionGranted && (
+             <button onClick={handlePermission}>Ativar Giroscópio</button>
+          )}
           <button onClick={onStart}>Começar</button>
           <button onClick={onMap}>Mapa</button>
           <button onClick={onCredits}>Sobre</button>
