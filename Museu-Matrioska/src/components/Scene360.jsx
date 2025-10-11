@@ -3,7 +3,7 @@
 import { Canvas } from '@react-three/fiber';
 import { useTexture, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
-import Hotspot from './Hotspot'; // Este caminho relativo já estava correto
+import Hotspot from './Hotspot';
 
 function Sphere({ textureUrl }) {
   const texture = useTexture(textureUrl);
@@ -21,8 +21,15 @@ export default function Scene360({ imageUrl, hotspots = [], onNavigate }) {
       <Sphere textureUrl={imageUrl} />
       <OrbitControls enableZoom={false} rotateSpeed={-0.5} />
 
+      {/* --- ALTERAÇÃO AQUI --- */}
+      {/* Mapeia os hotspots passando apenas as props necessárias para a nova seta */}
       {hotspots.map((spot) => (
-        <Hotspot key={spot.leadsTo} position={spot.position} onClick={() => onNavigate(spot.leadsTo)} />
+        <Hotspot
+          key={spot.leadsTo}
+          position={spot.position}
+          rotation={spot.rotation}
+          onClick={() => onNavigate(spot.leadsTo)}
+        />
       ))}
     </Canvas>
   );
