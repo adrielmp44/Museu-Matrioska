@@ -156,6 +156,49 @@
   border: none;
 }
 
+/* App.css */
+
+/* Aumenta a largura máxima do overlay para caber mais botões */
+.overlay-content.map-content {
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh; /* Evita que o mapa saia da tela */
+  overflow-y: auto; /* Adiciona scroll se tiver muitos botões */
+}
+
+.map-buttons {
+  display: grid;
+  /* Cria colunas automaticamente com largura mínima de 120px */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+  padding-right: 5px; /* Espaço para a barra de rolagem */
+}
+
+.map-buttons button {
+  padding: 10px;
+  font-size: 0.9rem;
+  background-color: rgba(80, 80, 80, 0.7);
+  border: 1px solid #555;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap; /* Evita quebra de texto "Local X" */
+}
+
+/* Personalização da barra de rolagem para ficar bonitinha */
+.overlay-content::-webkit-scrollbar {
+  width: 8px;
+}
+.overlay-content::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+.overlay-content::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+}
+
 /* ===============================================
    MEDIA QUERIES
    =============================================== */

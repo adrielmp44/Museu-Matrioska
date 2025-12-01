@@ -1,5 +1,3 @@
-// src/components/Hotspot.jsx
-
 import React, { useState, useMemo } from 'react';
 import { useCursor } from '@react-three/drei';
 import { a, useSpring } from '@react-spring/three';
