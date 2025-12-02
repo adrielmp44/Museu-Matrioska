@@ -23,7 +23,7 @@ export const navigationData = {
     { leadsTo: 'local16', position: [-10, -7, -0], rotation: [0, -1.6, 0] }
   ],
   local6: [
-    { leadsTo: 'local7', position: [0, -7, 5], rotation: [0, 0, 0] },
+    { leadsTo: 'local7', position: [0, -7, 8], rotation: [0, 0, 0] },
     { leadsTo: 'local4', position: [0, -7, -5], rotation: [0, 3.14, 0] }
   ],
   local7: [
@@ -36,13 +36,15 @@ export const navigationData = {
     { leadsTo: 'local9', position: [0, -2, -5], rotation: [0, 0, 0] }
   ],
   local9: [
-    { leadsTo: 'local8', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local10', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local10', position: [-4, -7, 7], rotation: [0, 0, 0] },
+    { leadsTo: 'local7', position: [-4, -7, -10], rotation: [0, 3, 0] },
+    { leadsTo: 'local24', position: [4, -7, -5], rotation: [0, 1.5, 0] }
   ],
   local10: [
     { leadsTo: 'local9', position: [-5, -7, -4], rotation: [0, 3.14, 0] },
     { leadsTo: 'local11', position: [-10, -7, 8], rotation: [0, 0, 0] },
     { leadsTo: 'local7', position: [-12, -7, 5], rotation: [0, -2.4, 0] },
+    { leadsTo: 'local22', position: [-2, -7, 7], rotation: [0, 0, 0] },
     { leadsTo: 'local24', position: [-10, -7, -8], rotation: [0, 3.14, 0] }
   ],
   local11: [
@@ -54,12 +56,12 @@ export const navigationData = {
     { leadsTo: 'local13', position: [0, -2, -5], rotation: [0, 0, 0] }
   ],
   local13: [
-    { leadsTo: 'local12', position: [0, -7, 5], rotation: [0, 3, 0] },
-    { leadsTo: 'local4', position: [1, -7, -5], rotation: [0, 3, 0] }
+    { leadsTo: 'local18', position: [-6, -7, 8], rotation: [0, -1.5, 0] },
+    { leadsTo: 'local19', position: [0, -7, 8], rotation: [0, 0, 0] }
   ],
   local14: [
-    { leadsTo: 'local13', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local15', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local13', position: [8, -7, 0], rotation: [0, 1.5, 0] },
+    { leadsTo: 'local16', position: [-8, -7, 0], rotation: [0, -1.5, 0] }
   ],
   local15: [
     { leadsTo: 'local14', position: [0, -2, 5], rotation: [0, 3.14, 0] },
@@ -69,48 +71,51 @@ export const navigationData = {
     { leadsTo: 'local5', position: [8, -7, 0], rotation: [0, 1.5, 0] },
     { leadsTo: 'local17', position: [-7, -7, 1], rotation: [0, -1.5, 0] },
     { leadsTo: 'local4', position: [5, -7, 5], rotation: [0, 0.6, 0] },
-    { leadsTo: 'local18', position: [-2, -7, 9], rotation: [0, 0, 0] }
+    { leadsTo: 'local14', position: [-2, -7, 9], rotation: [0, 0, 0] }
   ],
   local17: [
     { leadsTo: 'local18', position: [-2, -7, 8], rotation: [0, 0, 0] },
     { leadsTo: 'local16', position: [7, -7, 1], rotation: [0, 1.5, 0] },
-    { leadsTo: 'local18', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local14', position: [7, -7, 8], rotation: [0, 0, 0] }
   ],
   local18: [
     { leadsTo: 'local16', position: [6, -7, -3], rotation: [0, 2, 0] },
     { leadsTo: 'local19', position: [-5, -7, 4], rotation: [0, -1, 0] }
   ],
   local19: [
-    { leadsTo: 'local18', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local20', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local13', position: [8, -7, 0], rotation: [0, 1.5, 0] },
+    { leadsTo: 'local18', position: [3, -7, -8], rotation: [0, 3, 0] },
+    { leadsTo: 'local20', position: [2, -7, 8], rotation: [0, 0, 0] }
   ],
   local20: [
-    { leadsTo: 'local19', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local21', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local22', position: [2, -7, 5], rotation: [0, 0, 0] },
+    { leadsTo: 'local19', position: [0, -7, -5], rotation: [0, -3, 0] }
   ],
   local21: [
     { leadsTo: 'local20', position: [0, -2, 5], rotation: [0, 3.14, 0] },
     { leadsTo: 'local22', position: [0, -2, -5], rotation: [0, 0, 0] }
   ],
   local22: [
-    { leadsTo: 'local21', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local23', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local10', position: [4, -7, 5], rotation: [0, 0, 0] },
+    { leadsTo: 'local4', position: [2, -7, -12], rotation: [0, 3, 0] },
+    { leadsTo: 'local9', position: [4, -7, -7], rotation: [0, 1.5, 0] },
+    { leadsTo: 'local20', position: [-5, -7, 3], rotation: [0, -1.5, 0] }
   ],
   local23: [
     { leadsTo: 'local22', position: [0, -2, 5], rotation: [0, 3.14, 0] },
     { leadsTo: 'local24', position: [0, -2, -5], rotation: [0, 0, 0] }
   ],
   local24: [
-    { leadsTo: 'local23', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local25', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local25', position: [-4, -7, -5], rotation: [0, 3.14, 0] },
+    { leadsTo: 'local9', position: [4, -7, -5], rotation: [0, 3, 0] }
   ],
   local25: [
-    { leadsTo: 'local24', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local26', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local24', position: [4, -7, 7], rotation: [0, 1.5, 0] },
+    { leadsTo: 'local26', position: [-1, -7, 7], rotation: [0, -1.5, 0] }
   ],
   local26: [
-    { leadsTo: 'local25', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local27', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local25', position: [-5, -7, -5], rotation: [0, -1.5, 0] },
+    { leadsTo: 'local24', position: [-1, -7, -8], rotation: [0, 3, 0] }
   ],
   local27: [
     { leadsTo: 'local26', position: [0, -2, 5], rotation: [0, 3.14, 0] },
