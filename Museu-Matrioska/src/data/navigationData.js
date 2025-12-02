@@ -66,16 +66,19 @@ export const navigationData = {
     { leadsTo: 'local16', position: [0, -2, -5], rotation: [0, 0, 0] }
   ],
   local16: [
-    { leadsTo: 'local15', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local17', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local5', position: [8, -7, 0], rotation: [0, 1.5, 0] },
+    { leadsTo: 'local17', position: [-7, -7, 1], rotation: [0, -1.5, 0] },
+    { leadsTo: 'local4', position: [5, -7, 5], rotation: [0, 0.6, 0] },
+    { leadsTo: 'local18', position: [-2, -7, 9], rotation: [0, 0, 0] }
   ],
   local17: [
-    { leadsTo: 'local16', position: [0, -2, 5], rotation: [0, 3.14, 0] },
+    { leadsTo: 'local18', position: [-2, -7, 8], rotation: [0, 0, 0] },
+    { leadsTo: 'local16', position: [7, -7, 1], rotation: [0, 1.5, 0] },
     { leadsTo: 'local18', position: [0, -2, -5], rotation: [0, 0, 0] }
   ],
   local18: [
-    { leadsTo: 'local17', position: [0, -2, 5], rotation: [0, 3.14, 0] },
-    { leadsTo: 'local19', position: [0, -2, -5], rotation: [0, 0, 0] }
+    { leadsTo: 'local16', position: [6, -7, -3], rotation: [0, 2, 0] },
+    { leadsTo: 'local19', position: [-5, -7, 4], rotation: [0, -1, 0] }
   ],
   local19: [
     { leadsTo: 'local18', position: [0, -2, 5], rotation: [0, 3.14, 0] },

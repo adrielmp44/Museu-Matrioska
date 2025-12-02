@@ -51,7 +51,7 @@ const CreditsViewContent = ({ onBack }) => (
   <div className="overlay-container">
     <div className="overlay-content">
        <h2>CRÉDITOS</h2> 
-       <p>Desenvolvido pelos bolsistas.</p> 
+       <p>Desenvolvido pelos bolsistas - PPCA - PROGRAMA DE PROMOÇÃO DA CULTURA ARTÍSTICA.</p> 
        <button className="back-button" onClick={onBack}> Voltar ao Menu </button> 
     </div>
   </div>
