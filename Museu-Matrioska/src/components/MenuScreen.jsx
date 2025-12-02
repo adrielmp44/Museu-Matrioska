@@ -4,8 +4,11 @@ import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import './MenuScreen.css';
 
-import backgroundMenuImage1 from '../assets/fotos_museu/Local 1.jpg';
-import backgroundMenuImage2 from '../assets/fotos_museu/Local 2.jpg';
+// CORREÇÃO: Verifique se os nomes dos arquivos batem exatamente com a pasta
+import backgroundMenuImage1 from '../assets/fotos_museu/5.JPG';
+import backgroundMenuImage2 from '../assets/fotos_museu/8.JPG'; // Corrigido de .JP para .JPG
+
+// Imports dos Logos
 import logo from '../assets/logo_matrioska/Logo-Matrioska.png';
 import logoAzul from '../assets/logo_site/Fundo_Azul.png';
 import logoAzulBB from '../assets/logo_site/Fundo_AzulBB.png';
@@ -14,8 +17,8 @@ import logoPreto from '../assets/logo_site/Fundo_Preto.png';
 import logoSalmao from '../assets/logo_site/Fundo_Salmão.png';
 import logoVermelho from '../assets/logo_site/Fundo_Vermelho.png';
 
-
 function RotatingSphere() {
+  // Garante que o array tenha apenas texturas válidas
   const textures = useTexture([backgroundMenuImage1, backgroundMenuImage2]);
   const sphereRef = useRef();
   const [activeTexture, setActiveTexture] = useState(textures[0]);
@@ -40,65 +43,57 @@ function RotatingSphere() {
 }
 
 export default function MenuScreen({ onStart, onMap, onCredits }) {
+  // Lógica dos Logos Coloridos Aleatórios
   const siteLogos = [logoAzul, logoAzulBB, logoLaranja, logoPreto, logoSalmao, logoVermelho];
-  const [activeSiteLogo, setActiveSiteLogo] = useState(siteLogos[0]);
-  const [permissionGranted, setPermissionGranted] = useState(false);
+  const [activeSiteLogo, setActiveSiteLogo] = useState(null);
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * siteLogos.length);
-    setActiveSiteLogo(siteLogos[randomIndex]);
+    const randomLogo = siteLogos[Math.floor(Math.random() * siteLogos.length)];
+    setActiveSiteLogo(randomLogo);
   }, []);
 
-  const handlePermission = async () => {
-    // Verifica se a API de permissão está disponível (padrão para iOS)
+  const handleStartWithPermission = async () => {
+    // Tenta permissão para iOS (Giroscópio)
     if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
       try {
-        const response = await DeviceOrientationEvent.requestPermission();
-        if (response === 'granted') {
-          setPermissionGranted(true);
-          alert('Acesso ao giroscópio concedido!');
-        } else {
-          alert('Acesso ao giroscópio negado.');
-        }
-      } catch (error) {
-        console.error('Erro ao solicitar permissão de orientação do dispositivo:', error);
-        alert('Este dispositivo não suporta a solicitação de permissão para o giroscópio.');
+        await DeviceOrientationEvent.requestPermission();
+      } catch (e) {
+        console.error(e);
       }
-    } else {
-      // Para outros dispositivos (Android), a permissão geralmente não é necessária
-      setPermissionGranted(true);
-      console.log('Permissão de orientação do dispositivo não necessária ou já concedida.');
     }
+    onStart();
   };
 
   return (
     <div className="menu-container">
       <div className="background-canvas">
-        <Canvas>
-          <RotatingSphere />
+        <Canvas camera={{ position: [0, 0, 0.1] }}>
+           <RotatingSphere />
         </Canvas>
       </div>
 
       <div className="menu-overlay">
-        <img src={logo} alt="Logo Museu Matrioska" className="logo" />
+        <img src={logo} alt="Logo Museu" className="logo" />
         <div className="subtitle-container">
           <p>Experiência 360°: Museu Jacinto de Sousa</p>
         </div>
+        
         <div className="menu-buttons">
-          {/Mobi|Android/i.test(navigator.userAgent) && !permissionGranted && (
-             <button onClick={handlePermission}>Ativar Giroscópio</button>
-          )}
-          <button onClick={onStart}>Começar</button>
+          <button onClick={handleStartWithPermission}>Começar</button>
           <button onClick={onMap}>Mapa</button>
           <button onClick={onCredits}>Sobre</button>
         </div>
+        
         <div className="footer-menu">
           <p>Em memória de Jacinto de Sousa</p>
         </div>
 
-        <div className="site-logo-container">
-          <img src={activeSiteLogo} alt="Logo do Museu" />
-        </div>
+        {/* Lógica dos Logos no canto inferior direito */}
+        {activeSiteLogo && (
+          <div className="site-logo-container">
+             <img src={activeSiteLogo} alt="Logo Colorido Site" />
+          </div>
+        )}
       </div>
     </div>
   );

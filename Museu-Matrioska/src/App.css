@@ -7,12 +7,12 @@
   background-color: #000;
 }
 
-/* --- ALTERAÇÃO PRINCIPAL AQUI --- */
+
 .tour-back-button {
   position: absolute;
   bottom: 20px;
-  right: 20px; /* Alterado de 'left' para 'right' */
-  left: auto;   /* Remove a propriedade 'left' anterior */
+  right: 20px; 
+  left: auto;   
   z-index: 100;
   padding: 8px 16px;
   font-size: 0.9rem;
@@ -75,7 +75,7 @@
   background-color: rgba(100, 100, 100, 0.9);
 }
 
-/* Botão "Voltar" genérico para overlays */
+
 .back-button {
   margin-top: 30px;
   padding: 12px 25px;
@@ -96,10 +96,12 @@
    ESTILOS DOS CONTROLES DE ÁUDIO GLOBAIS
    =============================================== */
 
+
+
 .audio-controls {
   position: absolute;
   bottom: 30px;
-  left: 40px; /* Mantém os controles de som à esquerda */
+  left: 40px; 
   display: flex;
   align-items: center;
   gap: 15px;
@@ -199,15 +201,48 @@
   border-radius: 4px;
 }
 
-/* ===============================================
-   MEDIA QUERIES
-   =============================================== */
+/* Adicione ou atualize estas partes no App.css */
 
-@media (max-width: 400px) {
-  .tour-back-button {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-    bottom: 15px;
-    right: 15px; /* Ajuste para telas menores */
+.tour-container {
+  /* ... mantenha o resto ... */
+  background-color: #000; /* Garante fundo preto se a imagem falhar */
+}
+
+/* Estilo do botão de Giroscópio */
+.gyro-button {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.gyro-button.active {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  font-weight: bold;
+}
+
+/* Ajuste no container de controles para caber o botão novo */
+.audio-controls {
+  /* ... mantenha o posicionamento ... */
+  gap: 10px; /* Reduzi um pouco o gap para caber tudo */
+}
+
+/* Ajuste Mobile para os controles não saírem da tela */
+@media (max-width: 450px) {
+  .audio-controls {
+    left: 20px;
+    right: 20px;
+    justify-content: flex-start;
+  }
+  
+  .volume-slider {
+    width: 80px; /* Slider menor no celular */
   }
 }
